@@ -53,7 +53,7 @@ def radix_sort_10(array, d): # radix = 10
 
         base = 1
         for i in range(1, d+1):
-            temp = [(x//base%10, x) for x in array]
+            temp = [(x // base % 10, x) for x in array]
             array = [x[1] for x in counting_sort(temp, 10)] # 使用了上面的counting_sort
             base *= 10
     else:
@@ -174,11 +174,15 @@ def bucket_sort_pretreatment(array):
     new_array = []
 
     if isinstance(array[0], int):
-        maxNum = max(array) + 1
-        new_array = [(x/maxNum, x) for x in array]
+        maxNum = max(array)
+        minNum = min(array)
+        length = maxNum - minNum + 1
+        new_array = [((x-minNum)/length, x) for x in array]
     else:
-        maxNum = max([x[0] for x in array]) + 1
-        new_array = [(x[0]/maxNum, x) for x in array]
+        maxNum = max([x[0] for x in array])
+        minNum = min([x[0] for x in array])
+        length = maxNum - minNum + 1
+        new_array = [((x[0]-minNum)/length, x) for x in array]
 
     return new_array
 
