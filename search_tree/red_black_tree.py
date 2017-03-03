@@ -10,4 +10,4 @@ class RBT(object):
         self.root.color = 'B'
         self.root.parent = self.NIL
 
-        
+
